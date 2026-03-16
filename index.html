@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PINZO Sneakers</title>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+  <header>
+    <h1 class="logo" onclick="window.location.href='index.html'">PINZO</h1>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Sneakers</a>
+      <a href="cart.html">Cart 🛒 <span id="cartCount">0</span></a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Signup</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>STEP INTO GREATNESS</h2>
+    <p>Discover Premium Sneakers</p>
+    <button type="button" onclick="window.location.href='products.html'">Shop Now</button>
+  </section>
+
+  <section class="products">
+    <h2>Trending Sneakers</h2>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="Images/airforce1.jpg" alt="Nike Air Force 1">
+        <h3>Nike Air Force 1</h3>
+        <p>₹10,999</p>
+        <button type="button" onclick="window.location.href='product.html?name=Nike Air Force 1&price=10999&image=airforce1.jpg'">View</button>
+      </div>
+
+      <div class="product-card">
+        <img src="Images/jordan1.jpg" alt="Air Jordan 1">
+        <h3>Air Jordan 1</h3>
+        <p>₹14,999</p>
+        <button type="button" onclick="window.location.href='product.html?name=Air Jordan 1&price=14999&image=jordan1.jpg'">View</button>
+      </div>
+
+      <div class="product-card">
+        <img src="Images/superstar.jpg" alt="Adidas Superstar">
+        <h3>Adidas Superstar</h3>
+        <p>₹8,999</p>
+        <button type="button" onclick="window.location.href='product.html?name=Adidas Superstar&price=8999&image=superstar.jpg'">View</button>
+      </div>
+
+      <div class="product-card">
+        <img src="Images/reebokclassic.jpg" alt="Reebok Classic">
+        <h3>Reebok Classic</h3>
+        <p>₹7,999</p>
+        <button type="button" onclick="window.location.href='product.html?name=Reebok Classic&price=7999&image=reebokclassic.jpg'">View</button>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="JS/script.js"></script>
+  <footer>
+
+<div class="footer-content">
+
+<h2>PINZO</h2>
+
+<p>Premium Sneakers for Street Culture</p>
+
+<p>© 2026 PINZO. All rights reserved.</p>
+
+</div>
+
+</footer>
+</body>
+</html>

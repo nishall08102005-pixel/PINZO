@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | PINZO</title>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+
+  <header>
+    <h1 class="logo" onclick="window.location.href='index.html'">PINZO</h1>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Sneakers</a>
+      <a href="cart.html">Cart 🛒 <span id="cartCount">0</span></a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Signup</a>
+    </nav>
+  </header>
+
+  <div class="product-page">
+
+    <div class="product-image">
+      <img id="productImage" src="" alt="Sneaker Image">
+    </div>
+
+    <div class="product-info">
+      <h2 id="productName"></h2>
+      <p class="price" id="productPrice"></p>
+
+      <p id="productDescription">
+        Premium sneaker with stylish design and all-day comfort.
+        Perfect for casual wear and street style.
+      </p>
+
+      <h3>Select Size</h3>
+
+      <div class="sizes">
+        <button type="button" onclick="selectSize(this)">7</button>
+        <button type="button" onclick="selectSize(this)">8</button>
+        <button type="button" onclick="selectSize(this)">9</button>
+        <button type="button" onclick="selectSize(this)">10</button>
+        <button type="button" onclick="selectSize(this)">11</button>
+      </div>
+
+      <p id="selectedSizeText">Selected Size: None</p>
+
+      <button class="cart-btn" type="button" onclick="addProductPageToCart()">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 PINZO. All rights reserved.</p>
+  </footer>
+
+  <script src="JS/script.js"></script>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const name = params.get("name");
+    const price = params.get("price");
+    const image = params.get("image");
+
+    if (name) {
+      document.getElementById("productName").innerText = name;
+    }
+
+    if (price) {
+      document.getElementById("productPrice").innerText = "₹" + price;
+    }
+
+    if (image) {
+      document.getElementById("productImage").src = "Images/" + image;
+    }
+
+    let selectedSize = "";
+
+    function selectSize(button) {
+      const buttons = document.querySelectorAll(".sizes button");
+
+      buttons.forEach(btn => {
+        btn.style.background = "#222";
+        btn.style.color = "white";
+      });
+
+      button.style.background = "white";
+      button.style.color = "black";
+
+      selectedSize = button.innerText;
+
+      document.getElementById("selectedSizeText").innerText =
+        "Selected Size: " + selectedSize;
+    }
+
+    function addProductPageToCart() {
+      if (selectedSize === "") {
+        alert("Please select a size");
+        return;
+      }
+
+      const cart = JSON.parse(localStorage.getItem("pinzoCart")) || [];
+
+      const product = {
+        id: Date.now(),
+        name: name,
+        brand: "Sneaker",
+        price: Number(price),
+        image: "Images/" + image,
+        size: selectedSize,
+        quantity: 1
+      };
+
+      const existingItem = cart.find(item =>
+        item.name === product.name && item.size === product.size
+      );
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem("pinzoCart", JSON.stringify(cart));
+
+      if (typeof updateCartCount === "function") {
+        updateCartCount();
+      }
+
+      alert("Added to Cart");
+      window.location.href = "cart.html";
+    }
+  </script>
+<footer>
+
+<div class="footer-content">
+
+<h2>PINZO</h2>
+
+<p>Premium Sneakers for Street Culture</p>
+
+<p>© 2026 PINZO. All rights reserved.</p>
+
+</div>
+
+</footer>
+</body>
+</html>
